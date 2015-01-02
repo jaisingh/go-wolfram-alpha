@@ -1,10 +1,10 @@
-go-wolfram-alpha
-====
+				go-wolfram-alpha
+				====
 
-abstract
-====
+				abstract
+				====
 
-api for wolfram alpha & will be implement for mathematica.
+				api for wolfram alpha & will be implement for mathematica.
 
 
 
@@ -13,24 +13,24 @@ Install
 
 go get github.com/KeizoBookman/go-wolfram-alpha
 
-SAMPLE
-====
+				SAMPLE
+				====
 
-On your terminal.
-exist under ./exmpale
+				On your terminal.
+				exist under ./example
 
-go build ./example/sample.go
-./sample // execute
+				go build ./example/sample.go
+				./sample // execute
 
-PLAN
-====
-implementation
+				PLAN
+				====
+				implementation
 
-call wolfram alpha api in plaintext, image
+				call wolfram alpha api in plaintext, image
 
-will be
+				will be
 
-user can switch plaintext/image/mathematica input and other strucuter that wolfram Research provides.
+				user can switch plaintext/image/mathematica input and other strucuter that wolfram Research provides.
 
 LICENSE
 ====
