@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	wolfram "github.com/jaisingh/go-wolfram-alpha"
+	"github.com/jaisingh/go-wolfram-alpha/wolfram"
 )
 
 func main() {
