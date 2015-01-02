@@ -17,9 +17,8 @@ SAMPLE
 ====
 
 On your terminal.
-exist under ./example
 
-go run example/sample.go
+go run wolframAlpha.go
 
 PLAN
 ====
