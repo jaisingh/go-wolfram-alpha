@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+
 	"os"
 
 	"github.com/jaisingh/go-wolfram-alpha/wolfram"
@@ -15,6 +16,16 @@ func main() {
 	}
 
 	c := wolfram.New(id)
+
+	/* proxyUrl, _ := url.Parse("http://localhost:8080")
+	tr := &http.Transport{
+		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+		Proxy:           http.ProxyURL(proxyUrl),
+	}
+	httpClient := http.Client{Transport: tr}
+	c.Client = httpClient
+	*/
+
 	q, err := c.Get("msft")
 	if err != nil {
 		fmt.Print("Error:", err)
