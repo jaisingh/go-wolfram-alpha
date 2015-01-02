@@ -2,13 +2,20 @@ package main
 
 import (
 	"fmt"
-	wolfram "github.com/KeizoBookman/go-wolfram-alpha"
+	"os"
+
+	wolfram "github.com/jaisingh/go-wolfram-alpha"
 )
 
 func main() {
-	id := ""
+	id := os.Getenv("WAID")
+	if id == "" {
+		fmt.Println("Please define environment var WAID with your AppID")
+		os.Exit(1)
+	}
+
 	c := wolfram.New(id)
-	q,err := c.Get("oosaka")
+	q, err := c.Get("msft")
 	if err != nil {
 		fmt.Errorf("%v", err)
 		return
@@ -23,5 +30,4 @@ func main() {
 			fmt.Println("sub", subpod.Title)
 		}
 	}
-	return
 }
