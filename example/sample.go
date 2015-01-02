@@ -17,10 +17,10 @@ func main() {
 	c := wolfram.New(id)
 	q, err := c.Get("msft")
 	if err != nil {
-		fmt.Errorf("%v", err)
-		return
+		fmt.Print("Error:", err)
+		os.Exit(1)
 	}
-	fmt.Println(q)
+	fmt.Printf("%+v\n", q)
 	fmt.Println("====================")
 
 	// example access pod

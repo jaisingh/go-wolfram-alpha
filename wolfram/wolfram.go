@@ -12,7 +12,7 @@ package wolfram
 // ctx := wolfram.New(<your-app-id>)
 // ctx.Get()
 // fmt.Println(ctx.Query)
-// 
+//
 
 import (
 	"encoding/xml"
@@ -59,18 +59,18 @@ type Pod struct {
 	//tag
 	Title      string `xml:"title,attr"`
 	Scanner    string `xml:"scanner,attr"`
-	Id         string  `xml:"id,attr"`
+	Id         string `xml:"id,attr"`
 	Position   string `xml:"position,attr"`
 	Err        string `xml:"error,attr"`
 	Numsubpods int32  `xml:"numsubpods,attr"`
 
-	Subpods []SubPod `xml:"subod"`
+	Subpods []SubPod `xml:"subpod"`
 }
 
 type States struct {
 	XMLName xml.Name `xml:"states"`
-	Count int32 `xml:"count"`
-	State    []State  `xml:"state"`
+	Count   int32    `xml:"count"`
+	State   []State  `xml:"state"`
 }
 
 type State struct {
@@ -80,7 +80,7 @@ type State struct {
 }
 
 type SubPod struct {
-	XMLName   xml.Name `xml:"subpod,attr"`
+	XMLName   xml.Name `xml:"subpod"`
 	Title     string   `xml:"title,attr"`
 	PlainText string   `xml:"plaintext"`
 	Image     Img      `xml:"img"`
@@ -133,9 +133,8 @@ type Source struct {
 //
 
 type flag struct {
-    image bool
-    plaintext bool
-    html bool
-    sound bool
+	image     bool
+	plaintext bool
+	html      bool
+	sound     bool
 }
-
