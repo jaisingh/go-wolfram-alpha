@@ -16,6 +16,7 @@ package wolfram
 
 import (
 	"encoding/xml"
+	"net/http"
 )
 
 //
@@ -25,6 +26,7 @@ import (
 type Client struct {
 	appid string
 	Query QueryResult
+	http.Client
 }
 
 type QueryResult struct {
