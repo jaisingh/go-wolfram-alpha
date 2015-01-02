@@ -4,6 +4,7 @@ import (
 	"encoding/xml"
 	"fmt"
 	"io/ioutil"
+	"net/url"
 )
 
 func New(id string) *Client {
@@ -16,11 +17,11 @@ func New(id string) *Client {
 
 }
 
-func (c *Client) Get(data string) (*QueryResult, error) {
+func (c *Client) Get(data string, opts ...map[string]string) (*QueryResult, error) {
 	//export function
 	// atodeyaru
 	err := c.request(data)
-	return &c.Query, err
+	return &c.QueryResult, err
 }
 
 func (c *Client) request(input string) error {
@@ -32,7 +33,12 @@ func (c *Client) request(input string) error {
 	// args -> const variable like os.O_XXX
 	//      -> make strucure filed {image bool,plaintext bool,mathematica_input bool}
 
-	var url string = "http://api.wolframalpha.com/v2/query?appid=" + c.appid + "&input=" + input + "&format=" + "image,plaintext"
+	url := getWAURL(map[string]string{
+		"appid":  c.appid,
+		"input":  input,
+		"format": "image,plaintext",
+	})
+
 	var query QueryResult
 
 	//
@@ -53,24 +59,30 @@ func (c *Client) request(input string) error {
 		fmt.Errorf("unmarshal error:%v", err)
 		return err
 	}
-	c.Query = query
+	c.QueryResult = query
 
 	return nil
 }
 
 func (c *Client) IsSuccessed() bool {
 	//check to query-result server-side states
-	return c.Query.success
-}
-
-func (c *Client) ShowClient() error {
-	//maybe delete
-
-	return nil
+	return c.QueryResult.success
 }
 
 func flagCheck(f flag) string {
 
 	return ""
 
+}
+
+func getWAURL(opts map[string]string) string {
+	url, _ := url.Parse(URL_WOLFRAM_API)
+	query := url.Query()
+
+	for key, val := range opts {
+		query.Add(key, val)
+	}
+	url.RawQuery = query.Encode()
+
+	return url.String()
 }

@@ -24,8 +24,8 @@ import (
 //
 
 type Client struct {
-	appid string
-	Query QueryResult
+	appid       string
+	QueryResult QueryResult
 	http.Client
 }
 
