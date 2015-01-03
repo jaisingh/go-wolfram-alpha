@@ -24,9 +24,13 @@ import (
 //
 
 type Client struct {
-	appid       string
-	QueryResult QueryResult
+	appid string
 	http.Client
+}
+
+type Query struct {
+	Options map[string]string
+	Results *QueryResult
 }
 
 type QueryResult struct {

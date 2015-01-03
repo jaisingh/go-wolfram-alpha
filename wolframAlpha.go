@@ -26,7 +26,7 @@ func main() {
 	c.Client = httpClient
 	*/
 
-	q, err := c.Get("msft")
+	q, err := c.Query("MSFT")
 	if err != nil {
 		fmt.Print("Error:", err)
 		os.Exit(1)
@@ -35,7 +35,7 @@ func main() {
 	fmt.Println("====================")
 
 	// example access pod
-	for _, pod := range q.Pods {
+	for _, pod := range q.Results.Pods {
 		fmt.Println(pod.Title)
 		for _, subpod := range pod.Subpods {
 			fmt.Println("sub", subpod.Title)
